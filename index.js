@@ -53,7 +53,6 @@ class Graph {
         this.init()
     }
     init() {
-        requestAnimationFrame(() => this.init())
         ctx.clearRect(0, 0, canvas.width, canvas.height)
         for (let i = 0; i < this.points.length; i++) {
             this.points[i].draw()
@@ -66,10 +65,11 @@ class Graph {
                 ctx.beginPath()
                 ctx.moveTo(this.points[i].x, this.points[i].y)
                 ctx.lineTo(this.points[j].x, this.points[j].y)
-                ctx.strokeStyle = `rgba(255,255,255,${dis / this.maxDis})`
+                ctx.strokeStyle = `rgba(255,255,255,${1 - (dis / this.maxDis)})`
                 ctx.stroke()
             }
         }
+        requestAnimationFrame(() => this.init())
     }
 }
 
