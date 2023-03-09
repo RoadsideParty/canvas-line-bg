@@ -18,35 +18,28 @@ class Point {
     }
     draw() {
         ctx.beginPath()
-        let x, y;
         if (this.timestamp) {
             const relTime = (Date.now() - this.timestamp) / 1000
-            x = this.x + relTime * this.xSpeed
-            y = this.y + relTime * this.ySpeed
-            if (x >= (canvas.width - this.r)) {
+            this.x = this.x + relTime * this.xSpeed
+            this.y = this.y + relTime * this.ySpeed
+            if (this.x >= (canvas.width - this.r)) {
                 this.xSpeed = -this.xSpeed
-                x = canvas.width - this.r
+                this.x = canvas.width - this.r
             }
-            if (x <= 0) {
+            if (this.x <= 0) {
                 this.xSpeed = -this.xSpeed
-                x = this.r
+                this.x = this.r
             }
-            if (y >= (canvas.height - this.r)) {
+            if (this.y >= (canvas.height - this.r)) {
                 this.ySpeed = -this.ySpeed
-                y = canvas.height - this.r
+                this.y = canvas.height - this.r
             }
-            if (y <= 0) {
+            if (this.y <= 0) {
                 this.ySpeed = -this.ySpeed
-                y = this.r
+                this.y = this.r
             }
-            this.timestamp = Date.now()
-        } else {
-            x = this.x
-            y = this.y
-            this.timestamp = Date.now()
         }
-        this.x = x
-        this.y = y
+        this.timestamp = Date.now()
         ctx.arc(this.x, this.y, this.r, 0, 2 * Math.PI)
         ctx.fillStyle = '#fff'
         ctx.fill()
