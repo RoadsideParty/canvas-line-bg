@@ -26,7 +26,7 @@ class Point {
                 this.xSpeed = -this.xSpeed
                 this.x = canvas.width - this.r
             }
-            if (this.x <= 0) {
+            if (this.x <= this.r) {
                 this.xSpeed = -this.xSpeed
                 this.x = this.r
             }
@@ -34,7 +34,7 @@ class Point {
                 this.ySpeed = -this.ySpeed
                 this.y = canvas.height - this.r
             }
-            if (this.y <= 0) {
+            if (this.y <= this.r) {
                 this.ySpeed = -this.ySpeed
                 this.y = this.r
             }
